@@ -1,25 +1,28 @@
+// PhotoListItem.jsx
 import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = ({ photo }) => {
+  const { imageSource, id, profile, username, location } = photo;
+
   return (
     <div className="photo-list__item">
       <img
-        src={photo.imageSource}
-        alt={`Photo ${photo.id}`}
+        src={imageSource}
+        alt={`Photo ${id}`}
         className="photo-list__image"
       />
       <div className="photo-list__user-details">
         <div className="firstLine">
           <img
-            src={photo.profile}
-            alt={`${photo.username}'s profile`}
+            src={profile}
+            alt={`${username}'s profile`}
             className="photo-list__user-profile"
           />
-          <h4 className="photo-list__user-info">{photo.username}</h4>
+          <h4 className="photo-list__user-info">{username}</h4>
         </div>
-        <p className="photo-list__user-location">{`${photo.location.city}, ${photo.location.country}`}</p>
+        <p className="photo-list__user-location">{`${location.city}, ${location.country}`}</p>
       </div>
       <PhotoFavButton />
     </div>

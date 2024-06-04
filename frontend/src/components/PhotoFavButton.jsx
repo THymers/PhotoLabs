@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 
 import FavIcon from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
 
-function PhotoFavButton() {
+const PhotoFavButton = () => {
   const [isActive, setIsActive] = useState(false);
 
   const handleClick = () => {
@@ -16,11 +16,10 @@ function PhotoFavButton() {
       onClick={handleClick}
     >
       <div className="photo-list__fav-icon-svg">
-        {/* Insert React */}
         <FavIcon />
       </div>
     </div>
   );
-}
+};
 
 export default PhotoFavButton;
