@@ -4,7 +4,12 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = ({ photo }) => {
-  const { imageSource, id, profile, username, location } = photo;
+  const {
+    id,
+    urls: { regular: imageSource },
+    user: { profile, username, name },
+    location: { city, country },
+  } = photo;
 
   return (
     <div className="photo-list__item">
