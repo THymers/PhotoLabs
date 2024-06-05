@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useState } from "react";
+import TopNavigation from "components/TopNavigationBar";
+import PhotoList from "components/PhotoList";
+import "../styles/HomeRoute.scss";
 
-import '../styles/HomeRoute.scss';
+const HomeRoute = (props) => {
+  const [favorites, setFavorites] = useState([]);
 
-const HomeRoute = () => {
+  const toggleFavourite = (photoId) => {
+    if (favorites.includes(photoId)) {
+      setFavorites(favorites.filter((favPhotoId) => favPhotoId !== photoId));
+    } else {
+      setFavorites([...favorites, photoId]);
+    }
+  };
+  const isFavPhotoExist = favorites.length > 0;
+
   return (
     <div className="home-route">
-      {/* Insert React */}
+      <TopNavigation topics={props.topics} isFavPhotoExist={isFavPhotoExist} />
+      <PhotoList
+        photos={props.photos}
+        favorites={favorites}
+        toggleFavourite={toggleFavourite}
+        openModal={props.openModal}
+      />
     </div>
   );
 };

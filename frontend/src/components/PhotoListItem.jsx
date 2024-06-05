@@ -3,7 +3,7 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ photo, toggleFavourite, favorites }) => {
+const PhotoListItem = ({ photo, toggleFavourite, favorites, openModal }) => {
   const {
     id,
     urls: { regular: imageSource },
@@ -11,12 +11,17 @@ const PhotoListItem = ({ photo, toggleFavourite, favorites }) => {
     location: { city, country },
   } = photo;
 
+  const handlePhotoClick = () => {
+    openModal(photo);
+  };
+
   return (
     <div className="photo-list__item">
       <img
         src={imageSource}
         alt={`Photo ${id}`}
         className="photo-list__image"
+        onClick={handlePhotoClick}
       />
       <div className="photo-list__user-details">
         <div className="firstLine">
