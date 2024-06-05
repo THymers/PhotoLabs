@@ -3,7 +3,7 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ photo }) => {
+const PhotoListItem = ({ photo, toggleFavourite, favorites }) => {
   const {
     id,
     urls: { regular: imageSource },
@@ -27,9 +27,13 @@ const PhotoListItem = ({ photo }) => {
           />
           <h4 className="photo-list__user-info">{username}</h4>
         </div>
-        <p className="photo-list__user-location">{`${location.city}, ${location.country}`}</p>
+        <p className="photo-list__user-location">{`${city}, ${country}`}</p>
       </div>
-      <PhotoFavButton />
+      <PhotoFavButton
+        photoId={id}
+        toggleFavourite={toggleFavourite}
+        isFavorite={favorites.includes(id)}
+      />
     </div>
   );
 };
