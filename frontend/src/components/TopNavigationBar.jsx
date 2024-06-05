@@ -3,7 +3,6 @@ import TopicList from "./TopicList";
 import FavBadge from "./FavBadge";
 
 import "../styles/TopNavigationBar.scss";
-import "../styles/HomeRoute.scss";
 
 const TopNavigation = ({ topics, isFavPhotoExist }) => {
   return (
