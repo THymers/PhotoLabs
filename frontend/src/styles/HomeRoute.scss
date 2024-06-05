@@ -2,3 +2,22 @@
   max-width: 1200px;
   margin: auto;
 }
+.photo-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.photo-item {
+  flex: 1 1 calc(30% - 10px);
+  margin: 5px;
+  box-sizing: border-box;
+}
+
+.photo-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
