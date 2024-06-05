@@ -1,7 +1,9 @@
-.top-nav-bar__topic-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-right: 24px;
+.topic-list {
+  display: flex; /* This will arrange children in a row */
+  list-style: none; /* Remove default bullet points */
+  padding: 0;
+  margin: 0;
+}
+.topic-list li {
+  margin-right: 16px; /* Space between topics */
 }
