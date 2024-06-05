@@ -1,6 +1,5 @@
 import React from "react";
 import PhotoList from "./components/PhotoList";
-import TopicList from "./components/TopicList";
 import TopNavigationBar from "./components/TopNavigationBar";
 import "./App.scss";
 
@@ -17,7 +16,6 @@ const App = () => {
         topics={sampleTopics}
         isFavPhotoExist={isFavPhotoExist}
       />
-      <TopicList topics={sampleTopics} />
       <PhotoList />
     </div>
   );
