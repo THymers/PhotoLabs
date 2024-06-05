@@ -13,6 +13,7 @@ const HomeRoute = (props) => {
       setFavorites([...favorites, photoId]);
     }
   };
+  const isFavPhotoExist = favorites.length > 0;
 
   return (
     <div className="home-route">
