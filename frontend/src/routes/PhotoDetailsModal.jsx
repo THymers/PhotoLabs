@@ -4,9 +4,8 @@ import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
 
 const PhotoDetailsModal = ({ closeModal, photo }) => {
-  if (!photo) {
-    return null;
-  }
+  console.log("Selected Photo:", photo);
+
   return (
     <div className="photo-details-modal">
       <button
@@ -16,12 +15,19 @@ const PhotoDetailsModal = ({ closeModal, photo }) => {
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className="photo-details-modal__content">
-        <img
-          src={photo.url}
-          alt={photo.description}
-          className="photo-details-modal__image"
-        />
-        <p>{photo.description}</p>
+        {photo ? (
+          <>
+            <img
+              src={photo.url}
+              alt={photo.description}
+              className="photo-details-modal__image"
+            />
+            <p>{photo.description}</p>
+            <p> profile picture username location </p>
+          </>
+        ) : (
+          <p>No photo available</p>
+        )}
       </div>
     </div>
   );
