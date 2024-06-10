@@ -15,6 +15,14 @@ const HomeRoute = (props) => {
   };
   const isFavPhotoExist = favorites.length > 0;
 
+  if (!Array.isArray(props.photos)) {
+    console.error(
+      "Expected 'photos' to be an array, but received:",
+      typeof props.photos
+    );
+    return null;
+  }
+
   return (
     <div className="home-route">
       <TopNavigation topics={props.topics} isFavPhotoExist={isFavPhotoExist} />
