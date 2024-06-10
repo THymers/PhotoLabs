@@ -12,6 +12,19 @@
   z-index: 1000;
 }
 
+// .photo-details-modal__close-button {
+//   background-color: white;
+//   border: none;
+//   color: white;
+//   text-align: center;
+//   text-decoration: none;
+//   display: inline-block;
+//   font-size: 16px;
+//   cursor: pointer;
+//   margin-left: 16px;
+//   margin-top: 16px;
+// }
+
 .photo-details-modal__close-button {
   background-color: white;
   border: none;
@@ -19,11 +32,13 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
-  margin-left: 16px;
-  margin-top: 16px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }
+
 
 .photo-details-modal__images {
   margin-left: 36px;
@@ -35,7 +50,9 @@
 }
 
 .photo-details-modal__image {
-  max-width: 95%;
+  display: block; 
+  margin: 0 auto; 
+  max-width: 85%; 
   border-radius: 8px;
 }
 

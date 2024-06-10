@@ -3,8 +3,8 @@
 }
 .photo-list__fav-icon {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 25px;
+  left: 25px;
   cursor: pointer;
   border-width: 0.1px;
   background-color: #eeeeee;
@@ -15,10 +15,10 @@
   z-index: 1;
 }
 
-// .photo-list__fav-icon i:hover {
-//   color: red;
-//   cursor: pointer;
-// }
+.photo-list__fav-icon i:hover {
+  color: red;
+  cursor: pointer;
+}
 
 .photo-list__fav-icon-svg {
   padding: 7px;
@@ -29,3 +29,4 @@
 .photo-list__fav-icon-svg i.selected {
   color: red;
 }
+

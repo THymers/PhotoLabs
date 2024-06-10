@@ -22,4 +22,3 @@ const PhotoList = ({ photos, toggleFavourite, favorites, openModal }) => {
 };
 
 export default PhotoList;
-
