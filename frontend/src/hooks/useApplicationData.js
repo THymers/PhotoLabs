@@ -7,6 +7,7 @@ export const ACTIONS = {
   SET_TOPIC_DATA: "SET_TOPIC_DATA",
   SELECT_PHOTO: "SELECT_PHOTO",
   DISPLAY_PHOTO_DETAILS: "DISPLAY_PHOTO_DETAILS",
+  CLOSE_PHOTO_DETAILS: "CLOSE_PHOTO_DETAILS",
 };
 
 const initialState = {
@@ -17,25 +18,27 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-  case ACTIONS.FAV_PHOTO_ADDED:
-    return { ...state, favorites: [...state.favorites, action.payload.id] };
-  case ACTIONS.FAV_PHOTO_REMOVED:
-    return {
-      ...state,
-      favorites: state.favorites.filter(
-        (favPhotoId) => favPhotoId !== action.payload.id,
-      ),
-    };
-  case ACTIONS.SET_PHOTO_DATA:
-    return { ...state };
-  case ACTIONS.SET_TOPIC_DATA:
-    return { ...state };
-  case ACTIONS.SELECT_PHOTO:
-    return { ...state, selectedPhoto: action.payload.photo };
-  case ACTIONS.DISPLAY_PHOTO_DETAILS:
-    return { ...state, isModalOpen: true };
-  default:
-    throw new Error(`Unsupported action type: ${action.type}`);
+    case ACTIONS.FAV_PHOTO_ADDED:
+      return { ...state, favorites: [...state.favorites, action.payload.id] };
+    case ACTIONS.FAV_PHOTO_REMOVED:
+      return {
+        ...state,
+        favorites: state.favorites.filter(
+          (favPhotoId) => favPhotoId !== action.payload.id
+        ),
+      };
+    case ACTIONS.SET_PHOTO_DATA:
+      return { ...state };
+    case ACTIONS.SET_TOPIC_DATA:
+      return { ...state };
+    case ACTIONS.SELECT_PHOTO:
+      return { ...state, selectedPhoto: action.payload.photo };
+    case ACTIONS.DISPLAY_PHOTO_DETAILS:
+      return { ...state, isModalOpen: true };
+    case ACTIONS.CLOSE_PHOTO_DETAILS:
+      return { ...state, isModalOpen: false, selectedPhoto: null };
+    default:
+      throw new Error(`Unsupported action type: ${action.type}`);
   }
 };
 
@@ -48,8 +51,7 @@ const useApplicationData = () => {
   };
 
   const closeModal = () => {
-    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS });
-    dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo: null } });
+    dispatch({ type: ACTIONS.CLOSE_PHOTO_DETAILS });
   };
 
   const toggleFavourite = (photoId) => {

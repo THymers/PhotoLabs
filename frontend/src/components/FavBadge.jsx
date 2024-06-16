@@ -6,7 +6,7 @@ import "../styles/FavBadge.scss";
 const FavBadge = ({ isFavPhotoExist }) => {
   return (
     <div className={`fav-badge ${isFavPhotoExist ? "fav-badge--active" : ""}`}>
-      <FavIcon displayAlert={!!isFavPhotoExist} />
+      <FavIcon displayAlert={!!isFavPhotoExist} selected={isFavPhotoExist} />
     </div>
   );
 };
