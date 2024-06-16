@@ -1,9 +1,9 @@
 .topic-list {
-  display: flex; /* This will arrange children in a row */
-  list-style: none; /* Remove default bullet points */
+  display: flex; 
+  list-style: none; 
   padding: 0;
   margin: 0;
 }
 .topic-list li {
-  margin-right: 16px; /* Space between topics */
+  margin-right: 16px; 
 }
