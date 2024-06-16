@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 
 export const ACTIONS = {
   FAV_PHOTO_ADDED: "FAV_PHOTO_ADDED",
@@ -14,6 +14,8 @@ const initialState = {
   isModalOpen: false,
   selectedPhoto: null,
   favorites: [],
+  photoData: [],
+  topicData: [],
 };
 
 const reducer = (state, action) => {
@@ -28,9 +30,9 @@ const reducer = (state, action) => {
         ),
       };
     case ACTIONS.SET_PHOTO_DATA:
-      return { ...state };
+      return { ...state, photoData: action.payload.photos };
     case ACTIONS.SET_TOPIC_DATA:
-      return { ...state };
+      return { ...state, topicData: action.payload.topics };
     case ACTIONS.SELECT_PHOTO:
       return { ...state, selectedPhoto: action.payload.photo };
     case ACTIONS.DISPLAY_PHOTO_DETAILS:
@@ -44,6 +46,31 @@ const reducer = (state, action) => {
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    const fetchPhotos = async () => {
+      try {
+        const response = await fetch("/api/photos");
+        const photos = await response.json();
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: { photos } });
+      } catch (error) {
+        console.error("Error fetching photos:", error);
+      }
+    };
+
+    const fetchTopics = async () => {
+      try {
+        const response = await fetch("/api/topics");
+        const topics = await response.json();
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: { topics } });
+      } catch (error) {
+        console.error("Error fetching topics:", error);
+      }
+    };
+
+    fetchPhotos();
+    fetchTopics();
+  }, []);
 
   const openModal = (photo) => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo } });
@@ -66,6 +93,8 @@ const useApplicationData = () => {
     isModalOpen: state.isModalOpen,
     selectedPhoto: state.selectedPhoto,
     favorites: state.favorites,
+    photoData: state.photoData,
+    topicData: state.topicData,
     openModal,
     closeModal,
     toggleFavourite,
