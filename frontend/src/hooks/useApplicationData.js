@@ -1,5 +1,6 @@
 import { useReducer, useEffect } from "react";
 
+// Define action types for the reducer
 export const ACTIONS = {
   FAV_PHOTO_ADDED: "FAV_PHOTO_ADDED",
   FAV_PHOTO_REMOVED: "FAV_PHOTO_REMOVED",
@@ -11,6 +12,7 @@ export const ACTIONS = {
   CLOSE_PHOTO_DETAILS: "CLOSE_PHOTO_DETAILS",
 };
 
+// Define the initial state for the reducer
 const initialState = {
   isModalOpen: false,
   selectedPhoto: null,
@@ -20,6 +22,7 @@ const initialState = {
   similarPhotos: [],
 };
 
+// Reducer function to handle state updates based on action types
 const reducer = (state, action) => {
   switch (action.type) {
   case ACTIONS.FAV_PHOTO_ADDED:
@@ -52,9 +55,11 @@ const reducer = (state, action) => {
   }
 };
 
+// Custom hook to manage application data and state
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // Fetch photos data from the API when the component mounts
   useEffect(() => {
     const fetchPhotos = async() => {
       try {
@@ -66,6 +71,7 @@ const useApplicationData = () => {
       }
     };
 
+    // Fetch topics data from the API when the component mounts
     const fetchTopics = async() => {
       try {
         const response = await fetch("/api/topics");
@@ -80,6 +86,7 @@ const useApplicationData = () => {
     fetchTopics();
   }, []);
 
+  // Fetch photos by topic ID
   const fetchPhotosByTopic = async(topicId) => {
     try {
       const response = await fetch(`/api/topics/photos/${topicId}`);
@@ -90,15 +97,18 @@ const useApplicationData = () => {
     }
   };
 
+  // Open the photo details modal
   const openModal = (photo) => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo } });
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS });
   };
 
+  // Close the photo details modal
   const closeModal = () => {
     dispatch({ type: ACTIONS.CLOSE_PHOTO_DETAILS });
   };
 
+  // Toggle photo favorite status
   const toggleFavourite = (photoId) => {
     if (state.favorites.includes(photoId)) {
       dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { id: photoId } });

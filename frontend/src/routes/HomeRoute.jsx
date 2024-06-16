@@ -11,12 +11,13 @@ const HomeRoute = ({
   favorites,
   fetchPhotosByTopic,
 }) => {
-  const isFavPhotoExist = favorites.length > 0;
+  const isFavPhotoExist = favorites.length > 0; // Check if there are any favorite photos
 
+  // Log an error if photos is not an array and return null to prevent further rendering
   if (!Array.isArray(photos)) {
     console.error(
       "Expected 'photos' to be an array, but received:",
-      typeof photos
+      typeof photos,
     );
     return null;
   }
@@ -39,4 +40,3 @@ const HomeRoute = ({
 };
 
 export default HomeRoute;
-

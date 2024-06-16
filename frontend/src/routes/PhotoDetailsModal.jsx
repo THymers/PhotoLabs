@@ -11,6 +11,7 @@ const PhotoDetailsModal = ({
   isFavorite,
   similarPhotos,
 }) => {
+  // Handle case when no photo is provided
   if (!photo) {
     return (
       <div className="photo-details-modal">
