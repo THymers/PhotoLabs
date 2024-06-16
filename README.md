@@ -16,7 +16,9 @@ The PhotoLabs project for the Web Development React course programming.
  - PostgreSQL
 
  ## Screenshots
+
  !["Homepage"](https://github.com/THymers/PhotoLabs/blob/main/docs/Homepage.png?raw=true)
+ 
   !["Favourite Icon"](https://github.com/THymers/PhotoLabs/blob/main/docs/ModalFavIcon.png?raw=true)
 
 ## Setup
