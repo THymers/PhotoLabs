@@ -35,6 +35,7 @@ const App = () => {
           toggleFavourite={toggleFavourite}
           isFavorite={favorites.includes(selectedPhoto?.id)}
           similarPhotos={similarPhotos}
+          favorites={favorites}
         />
       )}
     </div>
