@@ -12,7 +12,6 @@
 //   similarPhotos,
 //   favorites,
 // }) => {
-//   // Handle case when no photo is provided
 //   if (!photo) {
 //     return (
 //       <div className="photo-details-modal">
@@ -74,11 +73,9 @@
 //               />
 //               <div>
 //                 <p className="photo-details-modal__photographer-info">{name}</p>
-//                 {(city || country) && (
-//                   <p className="photo-details-modal__photographer-location">
-//                     {city}, {country}
-//                   </p>
-//                 )}
+//                 <p className="photo-details-modal__photographer-location">
+//                   {`${city}, ${country}`}
+//                 </p>
 //               </div>
 //             </>
 //           )}
@@ -134,15 +131,17 @@ const PhotoDetailsModal = ({
     );
   }
 
+  console.log("Photo object:", photo); // Add this line to log the photo object
+
   const {
     urls: { full: url } = {},
     description,
-    user: {
-      profile: profileImageUrl,
-      name,
-      location: { city = "", country = "" } = {},
-    } = {},
+    user: { profile: profileImageUrl, name } = {},
+    location: { city, country } = {}, // Adjust this destructuring
   } = photo;
+
+  console.log("City:", city); // Add this line to log the city
+  console.log("Country:", country); // Add this line to log the country
 
   return (
     <div className="photo-details-modal">
@@ -179,9 +178,15 @@ const PhotoDetailsModal = ({
               />
               <div>
                 <p className="photo-details-modal__photographer-info">{name}</p>
-                <p className="photo-details-modal__photographer-location">
-                  {`${city}, ${country}`}
-                </p>
+                {city || country ? (
+                  <p className="photo-details-modal__photographer-location">
+                    {`${city}, ${country}`}
+                  </p>
+                ) : (
+                  <p className="photo-details-modal__photographer-location">
+                    Location not available
+                  </p>
+                )}
               </div>
             </>
           )}
